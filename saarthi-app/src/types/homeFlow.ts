@@ -29,6 +29,8 @@ export interface DemoUserStep extends BaseDemoStep {
   skipEngineResponse?: boolean
   targetContextId?: string
   contextNotice?: string
+  /** Short "what's carried forward" phrase shown on the handoff Transition Card */
+  handoffSummary?: string
 }
 
 export interface DemoAssistantStep extends BaseDemoStep {
@@ -36,6 +38,10 @@ export interface DemoAssistantStep extends BaseDemoStep {
   text: string
   blocks?: ChatBlock[]
   agentName?: string
+  /** Explicit org override — normally resolved from agentName via lib/orgTheme.ts */
+  agentOrg?: string
+  /** Marks an unprompted, proactive Saarthi turn (renders as a "Saarthi noticed" callout) */
+  isNudge?: boolean
 }
 
 export type DemoStep = DemoUserStep | DemoAssistantStep

@@ -13,6 +13,7 @@ import {
 import { useState, type ComponentType } from 'react'
 
 import { chatHistoryEntries } from '@/lib/chatHistory'
+import { getOrgVisualByName } from '@/lib/orgTheme'
 import { cn } from '@/lib/utils'
 import type { FlowKey } from '@/types/saarthi'
 
@@ -22,6 +23,8 @@ interface CapabilityItem {
   subtitle: string
   icon: ComponentType<{ className?: string }>
   subActions?: Array<{ key: FlowKey; label: string }>
+  /** Which partner org's agent this capability maps to, if any — makes "any org can plug in" concrete */
+  orgName?: string
 }
 
 const capabilityItems: CapabilityItem[] = [
@@ -30,6 +33,7 @@ const capabilityItems: CapabilityItem[] = [
     label: 'Listening at Scale',
     subtitle: 'Synthesize field insights into actionable knowledge',
     icon: Ear,
+    orgName: 'Shikshalokam',
     subActions: [
       { key: 'capture', label: 'Capture Discussions' },
       { key: 'story', label: 'Record Stories' },
@@ -48,18 +52,21 @@ const capabilityItems: CapabilityItem[] = [
     label: 'Insights Engine',
     subtitle: 'Evidence analysis and data insights',
     icon: Lightbulb,
+    orgName: 'Shikshalokam',
   },
   {
     key: 'companion',
     label: 'Saathi - MI Companion',
     subtitle: 'Real-time assistance to first-mile actors',
     icon: Sparkles,
+    orgName: 'Shikshalokam',
   },
   {
     key: 'program',
     label: 'Design Companion',
     subtitle: 'Support for program designers',
     icon: BookOpen,
+    orgName: 'Shikshalokam',
   },
   {
     key: 'commons',
@@ -201,6 +208,18 @@ export function SidebarNav({ activeFlow, onFlowChange, activeHistoryId, onSelect
                           {item.label}
                         </p>
                         <p className="mt-1 text-xs text-muted-foreground">{item.subtitle}</p>
+                        {item.orgName ? (
+                          <span
+                            className="mt-1.5 inline-flex items-center rounded-[4px] border px-1.5 py-0.5 font-mono text-[9px] font-semibold uppercase tracking-wider"
+                            style={{
+                              borderColor: getOrgVisualByName(item.orgName).hex,
+                              color: getOrgVisualByName(item.orgName).hex,
+                              backgroundColor: `${getOrgVisualByName(item.orgName).hex}14`,
+                            }}
+                          >
+                            {item.orgName}
+                          </span>
+                        ) : null}
 
                         {item.subActions ? (
                           <div className="mt-3 space-y-1.5">

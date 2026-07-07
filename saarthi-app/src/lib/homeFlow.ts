@@ -364,6 +364,10 @@ function parseStep(value: unknown): DemoStep | null {
         typeof value.contextNotice === "string"
           ? value.contextNotice
           : undefined,
+      handoffSummary:
+        typeof value.handoffSummary === "string"
+          ? value.handoffSummary
+          : undefined,
     };
     return step;
   }
@@ -377,6 +381,10 @@ function parseStep(value: unknown): DemoStep | null {
       blocks: parseChatBlocks(value.blocks),
       agentName:
         typeof value.agentName === "string" ? value.agentName : undefined,
+      agentOrg:
+        typeof value.agentOrg === "string" ? value.agentOrg : undefined,
+      isNudge:
+        typeof value.isNudge === "boolean" ? value.isNudge : undefined,
     };
   }
 

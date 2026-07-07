@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Fraunces:wght@500;700&family=Manrope:wght@400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@600;700;800&family=Public+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@500;600&display=swap');
 
 @tailwind base;
 @tailwind components;
@@ -6,23 +6,28 @@
 
 @layer base {
   :root {
-    --background: 210 40% 98%;
-    --foreground: 222 47% 11%;
+    /* "Rail Ink" — orchestration rails identity, not stock SaaS blue */
+    --background: 90 10% 96%;
+    --foreground: 195 18% 9%;
 
     --card: 0 0% 100%;
-    --card-foreground: 222 47% 11%;
+    --card-foreground: 195 18% 9%;
 
-    --primary: 217 91% 60%;
+    --primary: 172 74% 21%;
     --primary-foreground: 0 0% 100%;
 
-    --secondary: 214 32% 92%;
-    --secondary-foreground: 222 30% 22%;
+    --secondary: 150 12% 90%;
+    --secondary-foreground: 195 18% 16%;
 
-    --muted: 214 24% 94%;
-    --muted-foreground: 218 14% 43%;
+    --muted: 120 7% 91%;
+    --muted-foreground: 165 6% 38%;
 
-    --border: 214 24% 86%;
-    --ring: 217 91% 60%;
+    --border: 150 9% 86%;
+    --ring: 172 74% 21%;
+
+    /* Signal Amber — reserved for handoff cards + proactive-nudge callouts only */
+    --accent: 21 90% 48%;
+    --accent-foreground: 0 0% 100%;
 
     --radius: 1rem;
     --motion-ease-standard: cubic-bezier(0.2, 0.8, 0.2, 1);
@@ -37,19 +42,21 @@
 
   body {
     @apply bg-background text-foreground antialiased;
-    font-family: 'Manrope', 'Avenir Next', 'Segoe UI', sans-serif;
+    font-family: 'Public Sans', 'Segoe UI', sans-serif;
     min-height: 100vh;
     background-image:
-      radial-gradient(circle at 12% 16%, hsl(var(--primary) / 0.14), transparent 34%),
-      radial-gradient(circle at 88% 0%, hsl(188 84% 43% / 0.12), transparent 28%),
-      linear-gradient(145deg, hsl(var(--background)), hsl(214 100% 97%));
+      linear-gradient(hsl(var(--border) / 0.5) 1px, transparent 1px),
+      linear-gradient(90deg, hsl(var(--border) / 0.5) 1px, transparent 1px),
+      linear-gradient(160deg, hsl(var(--background)), hsl(150 14% 93%));
+    background-size: 48px 48px, 48px 48px, 100% 100%;
   }
 
   h1,
   h2,
   h3 {
-    font-family: 'Fraunces', Georgia, serif;
+    font-family: 'Big Shoulders Display', 'Segoe UI', sans-serif;
     letter-spacing: -0.01em;
+    text-transform: uppercase;
   }
 }
 

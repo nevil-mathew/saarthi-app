@@ -17,11 +17,17 @@ export default function App() {
 function SaarthiPrototype() {
   const [activeFlow, setActiveFlow] = useState<FlowKey>('home')
   const [activeHistoryId, setActiveHistoryId] = useState<string | null>(null)
+  const [activeHistoryContextId, setActiveHistoryContextId] = useState<string | null>(null)
   const { selectedChallenge } = useSaarthiState()
 
   function handleFlowChange(flow: FlowKey) {
     setActiveHistoryId(null)
     setActiveFlow(flow)
+  }
+
+  function handleSelectHistory(id: string) {
+    setActiveHistoryContextId(null)
+    setActiveHistoryId(id)
   }
 
   return (
@@ -31,9 +37,15 @@ function SaarthiPrototype() {
       selectedChallenge={selectedChallenge}
       selectedChallengeLabel={challengeData[selectedChallenge].label}
       activeHistoryId={activeHistoryId}
-      onSelectHistory={setActiveHistoryId}
+      onSelectHistory={handleSelectHistory}
+      activeHistoryContextId={activeHistoryContextId}
     >
-      <ChatWorkspace activeFlow={activeFlow} onFlowChange={handleFlowChange} activeHistoryId={activeHistoryId} />
+      <ChatWorkspace
+        activeFlow={activeFlow}
+        onFlowChange={handleFlowChange}
+        activeHistoryId={activeHistoryId}
+        onHistoryContextChange={setActiveHistoryContextId}
+      />
     </AppShell>
   )
 }

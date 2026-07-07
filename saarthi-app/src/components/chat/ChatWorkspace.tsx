@@ -1,6 +1,8 @@
 import { Bot, SendHorizontal, UserCircle2 } from 'lucide-react'
 import { useCallback, useEffect, useMemo, useRef, useState, type FormEvent, type KeyboardEvent, type ReactNode } from 'react'
 
+import { AgentStamp, getAgentRailColor } from '@/components/chat/AgentStamp'
+import { TransitionCard } from '@/components/chat/TransitionCard'
 import { Badge } from '@/components/ui/badge'
 import { Button } from '@/components/ui/button'
 import { Textarea } from '@/components/ui/textarea'
@@ -16,6 +18,7 @@ import {
   commonsSimulationEnabled,
 } from '@/lib/commonsFlow'
 import { getChatHistoryById } from '@/lib/chatHistory'
+import { getOrgVisual } from '@/lib/orgTheme'
 import {
   feedbackFlowConfig,
   feedbackSimulationEnabled,
@@ -47,6 +50,7 @@ interface ChatWorkspaceProps {
   activeFlow: FlowKey
   onFlowChange: (flow: FlowKey) => void
   activeHistoryId: string | null
+  onHistoryContextChange?: (contextId: string | null) => void
 }
 
 const defaultTypingMsPerChar = 24
@@ -70,7 +74,7 @@ function parseTypingSpeedMultiplier() {
 
 const typingSpeedMultiplier = parseTypingSpeedMultiplier()
 
-export function ChatWorkspace({ activeFlow, onFlowChange, activeHistoryId }: ChatWorkspaceProps) {
+export function ChatWorkspace({ activeFlow, onFlowChange, activeHistoryId, onHistoryContextChange }: ChatWorkspaceProps) {
   const idRef = useRef(0)
   const endRef = useRef<HTMLDivElement | null>(null)
   const composerTextareaRef = useRef<HTMLTextAreaElement | null>(null)
@@ -120,6 +124,19 @@ export function ChatWorkspace({ activeFlow, onFlowChange, activeHistoryId }: Cha
   const historyContextRef = useRef(historyContext)
   const activeFlowRef = useRef(activeFlow)
   const activeHistoryIdRef = useRef(activeHistoryId)
+  const lastAssistantAgentRef = useRef<{ agentName?: string; agentOrg?: string }>({})
+
+  useEffect(() => {
+    const lastAssistant = [...messages].reverse().find((message) => message.role === 'assistant')
+    lastAssistantAgentRef.current = {
+      agentName: lastAssistant?.agentName,
+      agentOrg: lastAssistant?.agentOrg,
+    }
+  }, [messages])
+
+  useEffect(() => {
+    onHistoryContextChange?.(historyContext?.id ?? null)
+  }, [historyContext, onHistoryContextChange])
 
   useEffect(() => {
     homeContextRef.current = homeContext
@@ -420,7 +437,12 @@ export function ChatWorkspace({ activeFlow, onFlowChange, activeHistoryId }: Cha
     setContextByMode(activeFlow, defaultContext)
   }, [activeFlow, activeHistoryId, getContextByMode, setContextByMode])
 
-  const appendScriptedAssistantTurn = useCallback((text: string, blocks?: ChatBlock[], agentName?: string) => {
+  const appendScriptedAssistantTurn = useCallback((
+    text: string,
+    blocks?: ChatBlock[],
+    agentName?: string,
+    options?: { agentOrg?: string; isNudge?: boolean },
+  ) => {
     const routedFlow = getRuntimeFlow()
 
     const assistantMessage: ChatMessage = {
@@ -431,6 +453,8 @@ export function ChatWorkspace({ activeFlow, onFlowChange, activeHistoryId }: Cha
       text,
       blocks,
       agentName,
+      agentOrg: options?.agentOrg,
+      isNudge: options?.isNudge,
     }
 
     setMessages((previous) => [...previous, assistantMessage])
@@ -438,7 +462,12 @@ export function ChatWorkspace({ activeFlow, onFlowChange, activeHistoryId }: Cha
 
   const sendPrompt = useCallback(async (
     rawPrompt: string,
-    options?: { skipEngineResponse?: boolean; targetContextId?: string; contextNotice?: string },
+    options?: {
+      skipEngineResponse?: boolean
+      targetContextId?: string
+      contextNotice?: string
+      handoffSummary?: string
+    },
   ) => {
     const input = rawPrompt.trim()
     if (!input) {
@@ -493,6 +522,19 @@ export function ChatWorkspace({ activeFlow, onFlowChange, activeHistoryId }: Cha
                 flow: targetContext.flow,
                 timestamp: new Date().toISOString(),
                 text: options.contextNotice,
+              }
+
+              if (activeHistoryId) {
+                const lastAgent = lastAssistantAgentRef.current
+                const fromVisual = getOrgVisual(lastAgent.agentName, lastAgent.agentOrg)
+                const toVisual = getOrgVisual(targetContext.label)
+                contextNoticeMessage.handoff = {
+                  fromLabel: lastAgent.agentName,
+                  fromOrg: fromVisual?.org,
+                  toLabel: targetContext.label,
+                  toOrg: toVisual?.org,
+                  summary: options.handoffSummary,
+                }
               }
             }
           }
@@ -699,7 +741,10 @@ export function ChatWorkspace({ activeFlow, onFlowChange, activeHistoryId }: Cha
             setIsAssistantThinking(false)
             return
           }
-          appendScriptedAssistantTurn(step.text, step.blocks, step.agentName)
+          appendScriptedAssistantTurn(step.text, step.blocks, step.agentName, {
+            agentOrg: step.agentOrg,
+            isNudge: step.isNudge,
+          })
           setIsAssistantThinking(false)
           await wait(step.postDelayMs ?? defaultPostStepDelayMs)
           continue
@@ -798,6 +843,7 @@ export function ChatWorkspace({ activeFlow, onFlowChange, activeHistoryId }: Cha
         skipEngineResponse: awaitingStep.skipEngineResponse,
         targetContextId: awaitingStep.targetContextId,
         contextNotice: awaitingStep.contextNotice,
+        handoffSummary: awaitingStep.handoffSummary,
       })
       setDraft('')
       const resume = resumeSimulationRef.current
@@ -918,6 +964,10 @@ function MessageBubble({
   const isSystem = message.role === 'system'
 
   if (isSystem) {
+    if (message.handoff) {
+      return <TransitionCard handoff={message.handoff} timestamp={message.timestamp} />
+    }
+
     return (
       <div className="flex justify-center motion-safe:animate-fade-up-sm motion-safe:[animation-fill-mode:both]">
         <div className="max-w-[900px] rounded-full border border-dashed border-primary/40 bg-primary/5 px-4 py-2 text-center">
@@ -929,6 +979,9 @@ function MessageBubble({
       </div>
     )
   }
+
+  const railColor = !isUser ? getAgentRailColor(message.agentName, message.agentOrg) : undefined
+  const showAgentStamp = !isUser && Boolean(message.agentName) && !message.isNudge
 
   return (
     <div
@@ -950,11 +1003,27 @@ function MessageBubble({
           'max-w-[900px] rounded-2xl border px-4 py-3',
           isUser
             ? 'border-primary/30 bg-primary text-primary-foreground'
+            : message.isNudge
+            ? 'border-accent/50 bg-accent/5 text-foreground'
             : 'border-border bg-background text-foreground',
         )}
+        style={
+          !isUser && !message.isNudge && railColor
+            ? { borderLeftColor: railColor, borderLeftWidth: 4 }
+            : undefined
+        }
       >
-        {!isUser && message.agentName ? (
-          <p className="mb-1 text-xs font-semibold text-primary">{message.agentName}</p>
+        {message.isNudge ? (
+          <p className="mb-1.5 flex items-center gap-1.5 text-[11px] font-semibold uppercase tracking-wide text-accent">
+            <span className="h-1.5 w-1.5 rounded-full bg-accent motion-safe:animate-soft-highlight" />
+            Saarthi noticed
+          </p>
+        ) : null}
+
+        {showAgentStamp ? (
+          <div className="mb-1.5">
+            <AgentStamp agentName={message.agentName} agentOrg={message.agentOrg} />
+          </div>
         ) : null}
 
         <p className={cn('whitespace-pre-wrap text-sm leading-relaxed', isUser ? 'text-primary-foreground' : 'text-foreground')}>

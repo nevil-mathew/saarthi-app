@@ -1,6 +1,7 @@
-import { Compass, Menu } from "lucide-react";
+import { Compass, Info, Menu } from "lucide-react";
 import { type PropsWithChildren } from "react";
 
+import { JourneyTimeline } from "@/components/layout/JourneyTimeline";
 import { SidebarNav } from "@/components/layout/SidebarNav";
 import { Button } from "@/components/ui/button";
 import {
@@ -10,7 +11,26 @@ import {
   SheetTitle,
   SheetTrigger,
 } from "@/components/ui/sheet";
+import { getChatHistoryById } from "@/lib/chatHistory";
 import type { ChallengeKey, FlowKey } from "@/types/saarthi";
+
+const dpiPrinciples = [
+  {
+    name: "Decentralized",
+    description: "Data and knowledge remain with each organization; Saarthi only orchestrates, never aggregates.",
+    visibleIn: "Visible in: org stamps + handoff cards",
+  },
+  {
+    name: "Open & Composable",
+    description: "Any organization can register agents via a standard protocol — no lock-in to one org's stack.",
+    visibleIn: "Visible in: journey timeline + sidebar roster",
+  },
+  {
+    name: "Trust-preserving",
+    description: "Handoffs between agents are always shown, never silent — organizations control what context their agent shares.",
+    visibleIn: "Visible in: the Transition Card itself",
+  },
+];
 
 interface AppShellProps extends PropsWithChildren {
   activeFlow: FlowKey;
@@ -19,6 +39,7 @@ interface AppShellProps extends PropsWithChildren {
   selectedChallenge: ChallengeKey;
   activeHistoryId: string | null;
   onSelectHistory: (id: string) => void;
+  activeHistoryContextId: string | null;
 }
 
 export function AppShell({
@@ -29,7 +50,10 @@ export function AppShell({
   selectedChallenge,
   activeHistoryId,
   onSelectHistory,
+  activeHistoryContextId,
 }: AppShellProps) {
+  const activeHistoryEntry = activeHistoryId ? getChatHistoryById(activeHistoryId) : null;
+
   return (
     <div className="h-dvh overflow-hidden bg-gradient-to-br from-background via-background to-secondary/45 text-foreground">
       <div className="flex h-full w-full flex-col lg:flex-row">
@@ -92,6 +116,12 @@ export function AppShell({
             </div>
           </header>
 
+          {activeHistoryEntry ? (
+            <div className="border-b border-border/70 bg-card/70 px-4 py-3 backdrop-blur md:px-6">
+              <JourneyTimeline activeContextId={activeHistoryContextId} entry={activeHistoryEntry} />
+            </div>
+          ) : null}
+
           <section className="flex flex-1 min-h-0 overflow-hidden p-4 md:p-6 lg:p-8">
             {children}
           </section>
@@ -120,13 +150,43 @@ function BrandBlock({
               SAARTHI
             </p>
             <p className="text-xs text-muted-foreground">
-              Education Intelligence Companion
+              Agentic AI Orchestrator
             </p>
           </div>
         </div>
-        <div className="mt-1 flex items-center gap-1 text-[11px] text-emerald-700">
-          <span className="h-1.5 w-1.5 rounded-full bg-emerald-600 motion-safe:animate-soft-highlight" />
-          Online
+        <div className="flex flex-col items-end gap-1.5">
+          <div className="flex items-center gap-1 text-[11px] text-emerald-700">
+            <span className="h-1.5 w-1.5 rounded-full bg-emerald-600 motion-safe:animate-soft-highlight" />
+            Online
+          </div>
+          <Sheet>
+            <SheetTrigger asChild>
+              <button
+                aria-label="About this demo"
+                className="flex items-center gap-1 text-[11px] text-muted-foreground underline-offset-2 hover:text-primary hover:underline"
+                type="button"
+              >
+                <Info className="h-3 w-3" />
+                DPI-aligned
+              </button>
+            </SheetTrigger>
+            <SheetContent className="max-w-[360px] border-border bg-card text-foreground">
+              <SheetHeader>
+                <SheetTitle className="text-foreground">Saarthi is DPI-aligned</SheetTitle>
+              </SheetHeader>
+              <div className="mt-5 space-y-4">
+                {dpiPrinciples.map((principle) => (
+                  <div className="rounded-xl border border-border bg-background/60 p-3" key={principle.name}>
+                    <p className="text-sm font-semibold text-foreground">{principle.name}</p>
+                    <p className="mt-1 text-xs leading-relaxed text-muted-foreground">{principle.description}</p>
+                    <p className="mt-2 font-mono text-[10px] uppercase tracking-wider text-primary">
+                      {principle.visibleIn}
+                    </p>
+                  </div>
+                ))}
+              </div>
+            </SheetContent>
+          </Sheet>
         </div>
       </div>
     </div>
