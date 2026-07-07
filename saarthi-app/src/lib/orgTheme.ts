@@ -21,20 +21,25 @@ interface OrgVisual {
   hex: string
 }
 
+/*
+ * Colors are chosen to stay distinct from the app's own chrome (indigo
+ * primary + marigold accent — see index.css) as well as from each other, so
+ * an org stamp is never confused for "Saarthi's own rail" or an accent moment.
+ */
 const ORG_VISUALS: Record<string, Omit<OrgVisual, 'org'>> = {
-  Shikshalokam: { shortCode: 'SL', hex: '#0E5C52' },
-  TAP: { shortCode: 'TAP', hex: '#B45309' },
+  Shikshalokam: { shortCode: 'SL', hex: '#1F6F5C' },
+  TAP: { shortCode: 'TAP', hex: '#7A3B59' },
 }
 
 const ORCHESTRATOR_VISUAL: OrgVisual = {
   org: 'Saarthi',
   shortCode: 'ORCH',
-  hex: '#12181A',
+  hex: '#14181F',
 }
 
 const UNKNOWN_ORG_VISUAL: Omit<OrgVisual, 'org'> = {
   shortCode: 'ORG',
-  hex: '#5B6764',
+  hex: '#5A5F58',
 }
 
 export function getOrgVisual(agentName?: string, agentOrgOverride?: string): OrgVisual | null {
