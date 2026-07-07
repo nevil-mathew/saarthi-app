@@ -1,5 +1,5 @@
 import { Compass, Info, Menu } from "lucide-react";
-import { type PropsWithChildren } from "react";
+import { useState, type PropsWithChildren } from "react";
 
 import { JourneyTimeline } from "@/components/layout/JourneyTimeline";
 import { SidebarNav } from "@/components/layout/SidebarNav";
@@ -53,6 +53,17 @@ export function AppShell({
   activeHistoryContextId,
 }: AppShellProps) {
   const activeHistoryEntry = activeHistoryId ? getChatHistoryById(activeHistoryId) : null;
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+
+  function handleMobileFlowChange(flow: FlowKey) {
+    onFlowChange(flow);
+    setIsMobileMenuOpen(false);
+  }
+
+  function handleMobileSelectHistory(id: string) {
+    onSelectHistory(id);
+    setIsMobileMenuOpen(false);
+  }
 
   return (
     <div className="h-dvh overflow-hidden bg-gradient-to-br from-background via-background to-secondary/45 text-foreground">
@@ -87,7 +98,7 @@ export function AppShell({
                   ShikshaLokam-inspired capability walkthrough
                 </p>
               </div>
-              <Sheet>
+              <Sheet onOpenChange={setIsMobileMenuOpen} open={isMobileMenuOpen}>
                 <SheetTrigger asChild>
                   <Button size="icon" variant="outline">
                     <Menu className="h-4 w-4" />
@@ -106,9 +117,9 @@ export function AppShell({
                     />
                     <SidebarNav
                       activeFlow={activeFlow}
-                      onFlowChange={onFlowChange}
+                      onFlowChange={handleMobileFlowChange}
                       activeHistoryId={activeHistoryId}
-                      onSelectHistory={onSelectHistory}
+                      onSelectHistory={handleMobileSelectHistory}
                     />
                   </div>
                 </SheetContent>
