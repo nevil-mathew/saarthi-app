@@ -6,27 +6,27 @@
 
 @layer base {
   :root {
-    /* "Terracotta Rail" — terracotta as the structural rail color, cool petrol accent */
-    --background: 90 7% 95%;
-    --foreground: 45 8% 10%;
+    /* "India Stack Indigo" — deep indigo rail, echoing India's DPI visual register (UPI/Aadhaar/DigiLocker) */
+    --background: 90 9% 96%;
+    --foreground: 218 22% 10%;
 
     --card: 0 0% 100%;
-    --card-foreground: 45 8% 10%;
+    --card-foreground: 218 22% 10%;
 
-    --primary: 15 59% 45%;
+    --primary: 218 61% 22%;
     --primary-foreground: 0 0% 100%;
 
-    --secondary: 75 9% 91%;
-    --secondary-foreground: 60 6% 15%;
+    --secondary: 90 9% 91%;
+    --secondary-foreground: 217 23% 15%;
 
-    --muted: 75 7% 89%;
-    --muted-foreground: 53 5% 35%;
+    --muted: 105 7% 89%;
+    --muted-foreground: 103 4% 36%;
 
-    --border: 72 6% 83%;
-    --ring: 15 59% 45%;
+    --border: 108 6% 83%;
+    --ring: 218 61% 22%;
 
-    /* Petrol — reserved for handoff cards + proactive-nudge callouts only */
-    --accent: 177 56% 28%;
+    /* Marigold — reserved for handoff cards + proactive-nudge callouts only */
+    --accent: 34 86% 58%;
     --accent-foreground: 0 0% 100%;
 
     --radius: 1rem;
@@ -47,7 +47,7 @@
     background-image:
       linear-gradient(hsl(var(--border) / 0.5) 1px, transparent 1px),
       linear-gradient(90deg, hsl(var(--border) / 0.5) 1px, transparent 1px),
-      linear-gradient(160deg, hsl(var(--background)), hsl(75 10% 92%));
+      linear-gradient(160deg, hsl(var(--background)), hsl(90 12% 93%));
     background-size: 48px 48px, 48px 48px, 100% 100%;
   }
 
