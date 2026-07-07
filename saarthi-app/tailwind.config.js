@@ -24,6 +24,15 @@ export default {
           DEFAULT: 'hsl(var(--card))',
           foreground: 'hsl(var(--card-foreground))',
         },
+        accent: {
+          DEFAULT: 'hsl(var(--accent))',
+          foreground: 'hsl(var(--accent-foreground))',
+        },
+      },
+      fontFamily: {
+        sans: ['"Public Sans"', 'Segoe UI', 'sans-serif'],
+        display: ['"Big Shoulders Display"', 'Segoe UI', 'sans-serif'],
+        mono: ['"IBM Plex Mono"', 'ui-monospace', 'monospace'],
       },
       borderRadius: {
         xl: 'var(--radius)',
@@ -54,6 +63,15 @@ export default {
           '0%, 100%': { opacity: '0.38', transform: 'scale(0.88)' },
           '50%': { opacity: '1', transform: 'scale(1)' },
         },
+        'rail-draw': {
+          '0%': { transform: 'scaleX(0)' },
+          '100%': { transform: 'scaleX(1)' },
+        },
+        'stamp-in': {
+          '0%': { transform: 'scale(0.85)', opacity: '0' },
+          '70%': { transform: 'scale(1.06)', opacity: '1' },
+          '100%': { transform: 'scale(1)', opacity: '1' },
+        },
       },
       animation: {
         'slide-in': 'slide-in 180ms cubic-bezier(0.2, 0.8, 0.2, 1)',
@@ -62,6 +80,8 @@ export default {
         'scale-in-sm': 'scale-in-sm 120ms cubic-bezier(0.2, 0.8, 0.2, 1)',
         'slide-x-sm': 'slide-x-sm 180ms cubic-bezier(0.2, 0.8, 0.2, 1)',
         'soft-highlight': 'soft-highlight 1200ms cubic-bezier(0.4, 0, 0.2, 1) infinite',
+        'rail-draw': 'rail-draw 420ms cubic-bezier(0.2, 0.8, 0.2, 1) 160ms both',
+        'stamp-in': 'stamp-in 320ms cubic-bezier(0.2, 0.8, 0.2, 1) 520ms both',
       },
     },
   },

@@ -115,7 +115,8 @@
               "typingMsPerChar": 30,
               "postDelayMs": 700,
               "targetContextId": "saathi-mi-planning",
-              "contextNotice": "Context switched to Saathi. Carrying forward the Chaupal discussion on girls' school safety."
+              "contextNotice": "Context switched to Saathi. Carrying forward the Chaupal discussion on girls' school safety.",
+              "handoffSummary": "Chaupal discussion: girls unsafe travelling to secondary school after Class 6"
             },
             {
               "id": "wl-11",
@@ -168,7 +169,8 @@
               "typingMsPerChar": 30,
               "postDelayMs": 700,
               "targetContextId": "mitra-impact-capture",
-              "contextNotice": "Context switched to Mitra. Linking this update to your Chaupal discussion and Micro Improvement plan."
+              "contextNotice": "Context switched to Mitra. Linking this update to your Chaupal discussion and Micro Improvement plan.",
+              "handoffSummary": "Micro Improvement plan: mothers' escort group for the walk to school"
             },
             {
               "id": "wl-16",
@@ -330,6 +332,7 @@
               "id": "sl-11",
               "type": "assistant",
               "agentName": "Saarthi",
+              "isNudge": true,
               "text": "Based on what you've shared, your school still has open challenges around learning outcomes and teacher motivation that came up in your story. Would you like to explore what challenge you can solve next, or get help on one you've already identified?",
               "postDelayMs": 800
             },
@@ -341,7 +344,8 @@
               "typingMsPerChar": 30,
               "postDelayMs": 700,
               "targetContextId": "saathi-next-mi",
-              "contextNotice": "Context switched to Saathi. Carrying forward your improvement story."
+              "contextNotice": "Context switched to Saathi. Carrying forward your improvement story.",
+              "handoffSummary": "Attendance improvement story: data-driven parent engagement drive"
             },
             {
               "id": "sl-13",
@@ -479,7 +483,8 @@
               "typingMsPerChar": 30,
               "postDelayMs": 700,
               "targetContextId": "teacher-companion",
-              "contextNotice": "Context switched to Teacher Companion. Carrying forward the video analysis."
+              "contextNotice": "Context switched to Teacher Companion. Carrying forward the video analysis.",
+              "handoffSummary": "Video analysis: pedagogy, sequencing, and pacing of the fractions lesson"
             },
             {
               "id": "tc-7",
@@ -612,7 +617,8 @@
               "typingMsPerChar": 30,
               "postDelayMs": 750,
               "targetContextId": "program-design-companion",
-              "contextNotice": "Context switched to Program Design Companion. Carrying forward the Bihar program insights."
+              "contextNotice": "Context switched to Program Design Companion. Carrying forward the Bihar program insights.",
+              "handoffSummary": "Bihar mentoring program insights: what worked, what didn't, teacher needs"
             },
             {
               "id": "pd-5",
