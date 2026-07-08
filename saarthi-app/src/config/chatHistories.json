@@ -143,21 +143,6 @@
               "postDelayMs": 650
             },
             {
-              "id": "ht-15",
-              "type": "assistant",
-              "agentName": "Saathi",
-              "text": "Got it. So parents aren't sharing concerns, the meetings feel rushed, and there's not enough time to actually discuss each child's progress. Have you tried anything so far to address this — like changing how the meetings are structured, or giving parents more time per child?",
-              "postDelayMs": 750
-            },
-            {
-              "id": "ht-16",
-              "type": "user",
-              "text": "no",
-              "skipEngineResponse": true,
-              "typingMsPerChar": 30,
-              "postDelayMs": 550
-            },
-            {
               "id": "ht-17",
               "type": "assistant",
               "agentName": "Saathi",
