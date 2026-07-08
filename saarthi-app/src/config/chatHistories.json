@@ -104,7 +104,7 @@
             {
               "id": "ht-10",
               "type": "user",
-              "text": "Yes, I would like to improve parent engagement regularly in the school - can you help me plan that?",
+              "text": "Yes, I would like to improve parent engagement regularly in the school - can you help me do that?",
               "skipEngineResponse": true,
               "typingMsPerChar": 30,
               "postDelayMs": 700,
@@ -122,7 +122,7 @@
             {
               "id": "ht-12",
               "type": "user",
-              "text": "That sounds right. I also want to improve PTMs.",
+              "text": "That sounds right.",
               "skipEngineResponse": true,
               "typingMsPerChar": 30,
               "postDelayMs": 650
@@ -131,7 +131,37 @@
               "id": "ht-13",
               "type": "assistant",
               "agentName": "Saathi",
-              "text": "Sure, Here's a plan built around making every PTM count.",
+              "text": "Before I put this together - how often do your PTMs currently happen?",
+              "postDelayMs": 700
+            },
+            {
+              "id": "ht-14",
+              "type": "user",
+              "text": "Once a term.",
+              "skipEngineResponse": true,
+              "typingMsPerChar": 30,
+              "postDelayMs": 600
+            },
+            {
+              "id": "ht-15",
+              "type": "assistant",
+              "agentName": "Saathi",
+              "text": "Got it. Is there a particular grade or group of parents you'd like to prioritize first, or should this cover the whole school?",
+              "postDelayMs": 700
+            },
+            {
+              "id": "ht-16",
+              "type": "user",
+              "text": "Let's prioritize Grade 1 and 2 parents first, since that's where we saw the drop.",
+              "skipEngineResponse": true,
+              "typingMsPerChar": 30,
+              "postDelayMs": 650
+            },
+            {
+              "id": "ht-17",
+              "type": "assistant",
+              "agentName": "Saathi",
+              "text": "Sure, here's a plan built around making every PTM count, starting with Grade 1 and 2 parents.",
               "blocks": [
                 {
                   "type": "kv",
@@ -147,7 +177,7 @@
                     },
                     {
                       "label": "Supporting actions",
-                      "value": "Personally invite at-risk families each term; share a one-page outcomes update before every PTM; rotate teachers presenting classroom work"
+                      "value": "Prioritize Grade 1 and 2 families each term; share a one-page outcomes update before every PTM; rotate teachers presenting classroom work"
                     },
                     { "label": "Timeline", "value": "20 to 30 days" },
                     {
@@ -160,7 +190,7 @@
               "postDelayMs": 850
             },
             {
-              "id": "ht-14",
+              "id": "ht-18",
               "type": "assistant",
               "agentName": "Saathi",
               "text": "I suggest you to use mitra for feedback from parents during PTMs. \nI'll check in after a week to see if you need help in implimentation. Anything else you need right now?",
