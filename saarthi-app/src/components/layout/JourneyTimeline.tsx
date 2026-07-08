@@ -20,7 +20,7 @@ interface JourneyTimelineProps {
  * columns), so text stays legible regardless of journey length.
  */
 export function JourneyTimeline({ entry, activeContextId }: JourneyTimelineProps) {
-  const [isOpen, setIsOpen] = useState(false)
+  const [isOpen, setIsOpen] = useState(true)
 
   const contexts = entry.config.contexts
   const effectiveContextId = activeContextId ?? contexts[0]?.id ?? null
