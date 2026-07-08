@@ -236,9 +236,42 @@
               "text": "Here is your Improvement Plan. I've compiled everything below. Take a look — if anything needs adjusting, let me know and I'll update it. Otherwise, say 'download' whenever you're ready and I'll send all formats at once.",
               "blocks": [
                 {
-                  "type": "text",
+                  "type": "kv",
                   "title": "Parent Engagement Plan: PTMs",
-                  "body": "Goal: Improve parent engagement in PTMs by ensuring sufficient time for meaningful discussion of each child's progress and creating space for parents to share concerns.\n\nObjective: Reduce PTM duration pressure by restructuring meetings to include dedicated time slots for individual child discussions and parent feedback, with parents reporting satisfaction in post-meeting feedback forms within 40 days.\n\nTimeline: 35 days\n\nAction Plan:\n1. Review the current PTM schedule and calculate time spent per child — identify where time is lost. (Week 1)\n2. Design a new PTM format with fixed time slots (e.g. 10 minutes per child) and share it with all teachers. (Week 1-2)\n3. Create a one-page discussion guide covering strengths, areas to improve, and space for parent questions. (Week 2)\n4. Hold a brief meeting with teachers to explain the new format and practice inviting parent questions. (Week 2-3)\n5. Conduct the first restructured PTM using the new format and observe how it flows. (Week 3-4)\n6. Collect feedback from parents after the PTM using a simple form. (Week 4)\n7. Review parent feedback and teacher observations, then adjust the format if needed. (Week 4-5)\n8. Conduct a second PTM with the refined format and track parent participation. (Week 5)\n\nSuccess Indicators:\n- Time per child: at least 10 minutes spent discussing each child's progress, measured after each PTM.\n- Parent participation: at least 70% of parents ask a question or share a concern during PTMs.\n- Parent satisfaction: at least 75% of parents report having enough time to discuss their child, via feedback form."
+                  "rows": [
+                    {
+                      "label": "Goal",
+                      "value": "Improve parent engagement in PTMs by ensuring sufficient time for meaningful discussion of each child's progress and creating space for parents to share concerns"
+                    },
+                    {
+                      "label": "Objective",
+                      "value": "Reduce PTM duration pressure by restructuring meetings to include dedicated time slots for individual child discussions and parent feedback"
+                    },
+                    { "label": "Timeline", "value": "35 days" }
+                  ]
+                },
+                {
+                  "type": "list",
+                  "title": "Action Plan",
+                  "items": [
+                    "Review the current PTM schedule and calculate time spent per child - identify where time is lost. (Week 1)",
+                    "Design a new PTM format with fixed time slots (e.g. 10 minutes per child) and share it with all teachers. (Week 1-2)",
+                    "Create a one-page discussion guide covering strengths, areas to improve, and space for parent questions. (Week 2)",
+                    "Hold a brief meeting with teachers to explain the new format and practice inviting parent questions. (Week 2-3)",
+                    "Conduct the first restructured PTM using the new format and observe how it flows. (Week 3-4)",
+                    "Collect feedback from parents after the PTM using a simple form. (Week 4)",
+                    "Review parent feedback and teacher observations, then adjust the format if needed. (Week 4-5)",
+                    "Conduct a second PTM with the refined format and track parent participation. (Week 5)"
+                  ]
+                },
+                {
+                  "type": "list",
+                  "title": "Success Indicators",
+                  "items": [
+                    "Time per child: at least 10 minutes spent discussing each child's progress, measured after each PTM.",
+                    "Parent participation: at least 70% of parents ask a question or share a concern during PTMs.",
+                    "Parent satisfaction: at least 75% of parents report having enough time to discuss their child, via feedback form."
+                  ]
                 }
               ],
               "postDelayMs": 900
@@ -247,7 +280,7 @@
               "id": "ht-24",
               "type": "assistant",
               "agentName": "Saathi",
-              "text": "I suggest you use Mitra to log parent feedback from PTMs as it comes in. I'll check in after a week to see if you need help with implementation. Anything else you need right now?",
+              "text": "I'll check in after a week to see if you need help with implementation. Anything else you need right now?",
               "postDelayMs": 700
             },
             {

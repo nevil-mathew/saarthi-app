@@ -4,6 +4,7 @@ import { ChatWorkspace } from '@/components/chat/ChatWorkspace'
 import { AppShell } from '@/components/layout/AppShell'
 import { challengeData } from '@/data/mockData'
 import { SaarthiStateProvider, useSaarthiState } from '@/hooks/useSaarthiState'
+import { chatHistoryEntries } from '@/lib/chatHistory'
 import type { FlowKey } from '@/types/saarthi'
 
 export default function App() {
@@ -16,7 +17,9 @@ export default function App() {
 
 function SaarthiPrototype() {
   const [activeFlow, setActiveFlow] = useState<FlowKey>('home')
-  const [activeHistoryId, setActiveHistoryId] = useState<string | null>(null)
+  const [activeHistoryId, setActiveHistoryId] = useState<string | null>(
+    chatHistoryEntries[0]?.id ?? null,
+  )
   const [activeHistoryContextId, setActiveHistoryContextId] = useState<string | null>(null)
   const { selectedChallenge } = useSaarthiState()
 
