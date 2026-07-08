@@ -404,9 +404,6 @@ function parseScript(value: unknown): DemoScript | null {
   const steps = value.steps
     .map((step) => parseStep(step))
     .filter((step): step is DemoStep => Boolean(step));
-  if (steps.length === 0) {
-    return null;
-  }
 
   return {
     id: value.id,

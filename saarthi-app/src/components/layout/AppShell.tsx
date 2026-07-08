@@ -12,6 +12,7 @@ import {
   SheetTrigger,
 } from "@/components/ui/sheet";
 import { getChatHistoryById } from "@/lib/chatHistory";
+import { cn } from "@/lib/utils";
 import type { ChallengeKey, FlowKey } from "@/types/saarthi";
 
 const dpiPrinciples = [
@@ -128,12 +129,17 @@ export function AppShell({
           </header>
 
           {activeHistoryEntry ? (
-            <div className="border-b border-border/70 bg-card/70 px-4 py-3 backdrop-blur md:px-6">
+            <div className="border-b border-border/70 bg-card/70 px-4 py-2.5 backdrop-blur md:px-6">
               <JourneyTimeline activeContextId={activeHistoryContextId} entry={activeHistoryEntry} />
             </div>
           ) : null}
 
-          <section className="flex flex-1 min-h-0 overflow-hidden p-4 md:p-6 lg:p-8">
+          <section
+            className={cn(
+              'flex flex-1 min-h-0 overflow-hidden p-4 md:p-6 lg:p-8',
+              activeHistoryEntry && 'pt-3 md:pt-3 lg:pt-3',
+            )}
+          >
             {children}
           </section>
         </main>

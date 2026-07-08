@@ -1,5 +1,177 @@
 [
   {
+    "id": "uc-head-teacher",
+    "title": "Head Teacher: Enrollment Improvement to Parent Engagement Plan",
+    "description": "A completed enrollment-improvement story becomes the starting point for an ongoing parent engagement plan built around PTMs.",
+    "config": {
+      "version": 1,
+      "defaultContextId": "mitra-enrollment-story",
+      "defaultScriptId": "uc-head-teacher-script",
+      "contexts": [
+        {
+          "id": "mitra-enrollment-story",
+          "label": "Mitra",
+          "subLabel": "Enrollment Story Capture",
+          "flow": "history"
+        },
+        {
+          "id": "saathi-parent-engagement",
+          "label": "Saathi",
+          "subLabel": "Parent Engagement Plan",
+          "flow": "history"
+        }
+      ],
+      "routingRules": [],
+      "demoScripts": [
+        {
+          "id": "uc-head-teacher-script",
+          "title": "Head Teacher: Enrollment Improvement to Parent Engagement Plan",
+          "steps": [
+            {
+              "id": "ht-1",
+              "type": "user",
+              "text": "I want to record how we turned around our Grade 1 enrollment this year.",
+              "skipEngineResponse": true,
+              "typingMsPerChar": 30,
+              "postDelayMs": 700
+            },
+            {
+              "id": "ht-2",
+              "type": "assistant",
+              "agentName": "Mitra",
+              "text": "Sure, Deepak. I'll help you capture this as a story. What was the challenge you were facing?",
+              "postDelayMs": 650
+            },
+            {
+              "id": "ht-3",
+              "type": "user",
+              "text": "Grade 1 enrollment had dropped - parents were choosing a nearby private school. They felt it had better English teaching, more facilities, and that we didn't focus enough on academics.",
+              "skipEngineResponse": true,
+              "typingMsPerChar": 30,
+              "postDelayMs": 650
+            },
+            {
+              "id": "ht-4",
+              "type": "assistant",
+              "agentName": "Mitra",
+              "text": "What did you do to address it?",
+              "postDelayMs": 650
+            },
+            {
+              "id": "ht-5",
+              "type": "user",
+              "text": "We identified the students and invited these at-risk Grade 1 families for a school walkthrough, shared a one-page outcomes summary, and had teachers explain our teaching approach directly. We further followed up with the feedback they had for what they thought should be done for improvement in teaching methods.",
+              "skipEngineResponse": true,
+              "typingMsPerChar": 30,
+              "postDelayMs": 650
+            },
+            {
+              "id": "ht-6",
+              "type": "assistant",
+              "agentName": "Mitra",
+              "text": "What changed after this?",
+              "postDelayMs": 650
+            },
+            {
+              "id": "ht-7",
+              "type": "user",
+              "text": "18 of the 22 families who were considering leaving decided to stay after the walkthrough and discussion.",
+              "skipEngineResponse": true,
+              "typingMsPerChar": 30,
+              "postDelayMs": 650
+            },
+            {
+              "id": "ht-8",
+              "type": "assistant",
+              "agentName": "Mitra",
+              "text": "This is a strong result, Deepak. I've captured it as a structured story.",
+              "blocks": [
+                {
+                  "type": "text",
+                  "title": "Enrollment Improvement Story",
+                  "body": "Deepak, a head teacher, noticed Grade 1 enrollment dropping as parents considered a nearby private school over concerns about academics and facilities.\n\nHe organised a personal outreach effort - inviting at-risk families for a school walkthrough, sharing a one-page outcomes summary, and having teachers explain the school's teaching approach directly. The team then followed up on the feedback families shared about how teaching methods could be improved.\n\nOf the 22 families considering leaving, 18 decided to stay after this engagement - a strong recovery driven by direct, personal outreach and responsiveness to parent feedback, rather than a broad campaign."
+                }
+              ],
+              "postDelayMs": 750
+            },
+            {
+              "id": "ht-9",
+              "type": "assistant",
+              "agentName": "Mitra",
+              "text": "Is there anything else I can help you with today?",
+              "postDelayMs": 700
+            },
+            {
+              "id": "ht-10",
+              "type": "user",
+              "text": "Yes, I would like to improve parent engagement regularly in the school - can you help me plan that?",
+              "skipEngineResponse": true,
+              "typingMsPerChar": 30,
+              "postDelayMs": 700,
+              "targetContextId": "saathi-parent-engagement",
+              "contextNotice": "Context switched to Saathi. Carrying forward your enrollment story.",
+              "handoffSummary": "Enrollment story: personal outreach and walkthroughs won back 18 of 22 at-risk families"
+            },
+            {
+              "id": "ht-11",
+              "type": "assistant",
+              "agentName": "Saathi",
+              "text": "Thanks, Deepak - I already have the context from your enrollment story: direct outreach and walkthroughs rebuilt trust with at-risk families. Let's turn that into an ongoing Parent Engagement Plan through PTMs, so this isn't a one-time effort.",
+              "postDelayMs": 800
+            },
+            {
+              "id": "ht-12",
+              "type": "user",
+              "text": "That sounds right. I also want to improve PTMs.",
+              "skipEngineResponse": true,
+              "typingMsPerChar": 30,
+              "postDelayMs": 650
+            },
+            {
+              "id": "ht-13",
+              "type": "assistant",
+              "agentName": "Saathi",
+              "text": "Sure, Here's a plan built around making every PTM count.",
+              "blocks": [
+                {
+                  "type": "kv",
+                  "title": "Parent Engagement Plan",
+                  "rows": [
+                    {
+                      "label": "Goal",
+                      "value": "Keep parent trust growing through regular, structured engagement"
+                    },
+                    {
+                      "label": "Key action",
+                      "value": "Redesign every PTM around one academic showcase plus an open Q&A on facilities and outcomes"
+                    },
+                    {
+                      "label": "Supporting actions",
+                      "value": "Personally invite at-risk families each term; share a one-page outcomes update before every PTM; rotate teachers presenting classroom work"
+                    },
+                    { "label": "Timeline", "value": "20 to 30 days" },
+                    {
+                      "label": "Success signal",
+                      "value": "Attendance and engagement at PTMs tracked term over term"
+                    }
+                  ]
+                }
+              ],
+              "postDelayMs": 850
+            },
+            {
+              "id": "ht-14",
+              "type": "assistant",
+              "agentName": "Saathi",
+              "text": "I suggest you to use mitra for feedback from parents during PTMs. \nI'll check in after a week to see if you need help in implimentation. Anything else you need right now?",
+              "postDelayMs": 700
+            }
+          ]
+        }
+      ]
+    }
+  },
+  {
     "id": "uc-woman-leader",
     "title": "Woman Leader: Chaupal to Impact",
     "description": "Discussion capture, Micro Improvement planning, and impact capture linked across time.",
@@ -143,12 +315,27 @@
                   "type": "kv",
                   "title": "Micro Improvement Plan",
                   "rows": [
-                    { "label": "Small action", "value": "Mothers form a rotating escort group for the walk to and from school on late-class days" },
-                    { "label": "Linked to", "value": "Chaupal discussion on girls' school safety" },
-                    { "label": "Expected outcome", "value": "Girls who had stopped attending return for at least 3 days a week" },
+                    {
+                      "label": "Small action",
+                      "value": "Mothers form a rotating escort group for the walk to and from school on late-class days"
+                    },
+                    {
+                      "label": "Linked to",
+                      "value": "Chaupal discussion on girls' school safety"
+                    },
+                    {
+                      "label": "Expected outcome",
+                      "value": "Girls who had stopped attending return for at least 3 days a week"
+                    },
                     { "label": "Timeline", "value": "6 weeks" },
-                    { "label": "Success signal", "value": "Attendance of at-risk girls tracked weekly by the group" },
-                    { "label": "Support needed", "value": "3-4 mothers willing to rotate escort duty" }
+                    {
+                      "label": "Success signal",
+                      "value": "Attendance of at-risk girls tracked weekly by the group"
+                    },
+                    {
+                      "label": "Support needed",
+                      "value": "3-4 mothers willing to rotate escort duty"
+                    }
                   ]
                 }
               ],
@@ -304,10 +491,22 @@
                   "type": "kv",
                   "title": "Improvement Story Card",
                   "rows": [
-                    { "label": "Challenge", "value": "Attendance dropped after harvest season; parents didn't see why regular attendance mattered" },
-                    { "label": "Action taken", "value": "Monthly parent engagement drive with home visits and a weekly attendance chart" },
-                    { "label": "Outcome", "value": "Attendance improved by around 18% over two months" },
-                    { "label": "Reflection", "value": "Parents respond better to seeing data than to general reminders" }
+                    {
+                      "label": "Challenge",
+                      "value": "Attendance dropped after harvest season; parents didn't see why regular attendance mattered"
+                    },
+                    {
+                      "label": "Action taken",
+                      "value": "Monthly parent engagement drive with home visits and a weekly attendance chart"
+                    },
+                    {
+                      "label": "Outcome",
+                      "value": "Attendance improved by around 18% over two months"
+                    },
+                    {
+                      "label": "Reflection",
+                      "value": "Parents respond better to seeing data than to general reminders"
+                    }
                   ]
                 }
               ],
@@ -372,12 +571,27 @@
                   "type": "kv",
                   "title": "Micro Improvement Plan",
                   "rows": [
-                    { "label": "Small action", "value": "Run a weekly 'explain it back' routine where students restate concepts in their own words" },
-                    { "label": "Built on", "value": "Attendance improvement story (data-driven parent engagement)" },
-                    { "label": "Expected outcome", "value": "More students can explain concepts without prompting" },
+                    {
+                      "label": "Small action",
+                      "value": "Run a weekly 'explain it back' routine where students restate concepts in their own words"
+                    },
+                    {
+                      "label": "Built on",
+                      "value": "Attendance improvement story (data-driven parent engagement)"
+                    },
+                    {
+                      "label": "Expected outcome",
+                      "value": "More students can explain concepts without prompting"
+                    },
                     { "label": "Timeline", "value": "3 weeks" },
-                    { "label": "Success signal", "value": "Teacher log shows increase in students explaining unprompted" },
-                    { "label": "Support needed", "value": "One classroom observation per week from a peer teacher" }
+                    {
+                      "label": "Success signal",
+                      "value": "Teacher log shows increase in students explaining unprompted"
+                    },
+                    {
+                      "label": "Support needed",
+                      "value": "One classroom observation per week from a peer teacher"
+                    }
                   ]
                 }
               ],
@@ -511,11 +725,26 @@
                   "type": "kv",
                   "title": "Lesson Plan: Linear Equations (Grade 8, 40 min)",
                   "rows": [
-                    { "label": "Opening", "value": "Concrete balance-scale model to introduce equality (8 min)" },
-                    { "label": "Guided practice", "value": "Paired solving with balance-scale diagrams, quick-check every 5 min (15 min)" },
-                    { "label": "Independent practice", "value": "Short problem set solved individually, symbols only (12 min)" },
-                    { "label": "Pacing", "value": "Four 8-10 minute segments with a check-in between each" },
-                    { "label": "Engagement checkpoint", "value": "Students explain their solving steps aloud before the teacher confirms" }
+                    {
+                      "label": "Opening",
+                      "value": "Concrete balance-scale model to introduce equality (8 min)"
+                    },
+                    {
+                      "label": "Guided practice",
+                      "value": "Paired solving with balance-scale diagrams, quick-check every 5 min (15 min)"
+                    },
+                    {
+                      "label": "Independent practice",
+                      "value": "Short problem set solved individually, symbols only (12 min)"
+                    },
+                    {
+                      "label": "Pacing",
+                      "value": "Four 8-10 minute segments with a check-in between each"
+                    },
+                    {
+                      "label": "Engagement checkpoint",
+                      "value": "Students explain their solving steps aloud before the teacher confirms"
+                    }
                   ]
                 }
               ],
@@ -660,10 +889,22 @@
                   "type": "kv",
                   "title": "Program Snapshot: Teacher Capacity Building, Telangana",
                   "rows": [
-                    { "label": "Objective", "value": "Improve subject-specific teaching practices through frequent, localized mentoring" },
-                    { "label": "Target group", "value": "Secondary school teachers in rural Telangana mandals" },
-                    { "label": "Key activities", "value": "Mandal-level mentor clusters with subject-specialist coaches; bi-weekly short visits instead of long infrequent ones" },
-                    { "label": "Indicators", "value": "Mentor visit consistency by block, teacher-reported coaching relevance, subject-specific practice adoption rate" }
+                    {
+                      "label": "Objective",
+                      "value": "Improve subject-specific teaching practices through frequent, localized mentoring"
+                    },
+                    {
+                      "label": "Target group",
+                      "value": "Secondary school teachers in rural Telangana mandals"
+                    },
+                    {
+                      "label": "Key activities",
+                      "value": "Mandal-level mentor clusters with subject-specialist coaches; bi-weekly short visits instead of long infrequent ones"
+                    },
+                    {
+                      "label": "Indicators",
+                      "value": "Mentor visit consistency by block, teacher-reported coaching relevance, subject-specific practice adoption rate"
+                    }
                   ]
                 }
               ],

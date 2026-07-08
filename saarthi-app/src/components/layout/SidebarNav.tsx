@@ -4,7 +4,6 @@ import {
   Ear,
   Globe,
   History,
-  Home,
   Lightbulb,
   MessagesSquare,
   Sparkles,
@@ -96,59 +95,31 @@ export function SidebarNav({ activeFlow, onFlowChange, activeHistoryId, onSelect
 
   return (
     <div className="space-y-4 text-foreground motion-safe:animate-fade-in">
-      <div>
-        <p className="mb-3 text-xs font-semibold uppercase tracking-wide text-muted-foreground">Primary</p>
-        <button
-          className={cn(
-            'w-full rounded-2xl border px-3 py-3 text-left transition-[transform,background-color,border-color,color,box-shadow] motion-transition-md active:scale-[0.98]',
-            activeFlow === 'home'
-              ? 'border-primary/35 bg-primary/10 text-foreground'
-              : 'border-border bg-card/90 text-foreground hover:border-primary/25 hover:bg-muted',
-          )}
-          onClick={() => onFlowChange('home')}
-          type="button"
-        >
-          <p className="flex items-center gap-2 text-sm font-semibold">
-            <Home
-              className={cn(
-                'h-4 w-4 transition-transform motion-transition-md',
-                activeFlow === 'home' ? 'scale-105 text-primary' : 'text-primary/85',
-              )}
-            />
-            Home
-          </p>
-          <p className="mt-1 text-xs text-muted-foreground">Main chat workspace with automatic context routing</p>
-        </button>
-      </div>
-
-      <div>
-        <p className="mb-3 text-xs font-semibold uppercase tracking-wide text-muted-foreground">Chat History</p>
-        <div className="space-y-2.5">
-          {chatHistoryEntries.map((entry) => (
-            <button
-              className={cn(
-                'w-full rounded-2xl border px-3 py-3 text-left transition-[transform,background-color,border-color,color,box-shadow] motion-transition-md active:scale-[0.98]',
-                entry.id === activeHistoryId
-                  ? 'border-primary/35 bg-primary/10 text-foreground'
-                  : 'border-border bg-card/90 text-foreground hover:border-primary/25 hover:bg-muted',
-              )}
-              key={entry.id}
-              onClick={() => onSelectHistory(entry.id)}
-              type="button"
-            >
-              <p className="flex items-center gap-2 text-sm font-semibold">
-                <History
-                  className={cn(
-                    'h-4 w-4 transition-transform motion-transition-md',
-                    entry.id === activeHistoryId ? 'scale-105 text-primary' : 'text-primary/85',
-                  )}
-                />
-                {entry.title}
-              </p>
-              <p className="mt-1 text-xs text-muted-foreground">{entry.description}</p>
-            </button>
-          ))}
-        </div>
+      <div className="space-y-2.5">
+        {chatHistoryEntries.map((entry) => (
+          <button
+            className={cn(
+              'w-full rounded-2xl border px-3 py-3 text-left transition-[transform,background-color,border-color,color,box-shadow] motion-transition-md active:scale-[0.98]',
+              entry.id === activeHistoryId
+                ? 'border-primary/35 bg-primary/10 text-foreground'
+                : 'border-border bg-card/90 text-foreground hover:border-primary/25 hover:bg-muted',
+            )}
+            key={entry.id}
+            onClick={() => onSelectHistory(entry.id)}
+            type="button"
+          >
+            <p className="flex items-center gap-2 text-sm font-semibold">
+              <History
+                className={cn(
+                  'h-4 w-4 transition-transform motion-transition-md',
+                  entry.id === activeHistoryId ? 'scale-105 text-primary' : 'text-primary/85',
+                )}
+              />
+              {entry.title}
+            </p>
+            <p className="mt-1 text-xs text-muted-foreground">{entry.description}</p>
+          </button>
+        ))}
       </div>
 
       <div>

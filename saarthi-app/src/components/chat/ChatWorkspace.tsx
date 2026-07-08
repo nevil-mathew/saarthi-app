@@ -872,50 +872,52 @@ export function ChatWorkspace({ activeFlow, onFlowChange, activeHistoryId, onHis
 
   return (
     <div className="flex h-full min-h-0 flex-1 flex-col overflow-hidden rounded-2xl border border-border bg-card/75 shadow-sm">
-      <div className="border-b border-border/80 bg-background/75 px-4 py-3 md:px-6">
-        <div className="flex flex-wrap items-center gap-2">
-          {showUnsetContextState ? (
-            <>
-              <Badge className="border-dashed border-border text-muted-foreground" variant="outline">
-                Context: Not selected yet
-              </Badge>
-              <Badge className="border-dashed border-border text-muted-foreground" variant="outline">
-                Sub-context: Waiting for intent
-              </Badge>
-            </>
-          ) : (
-            <>
-              <Badge className="border-primary/30 bg-primary/10 text-primary" variant="outline">
-                Context: {displayContextLabel}
-              </Badge>
-              {subContextLabel ? (
-                <Badge variant="outline">Sub-context: {subContextLabel}</Badge>
-              ) : activeFlow !== 'home' ? (
-                <Badge className="text-muted-foreground" variant="outline">
-                  Sub-context: -
+      {isHistoryMode ? null : (
+        <div className="border-b border-border/80 bg-background/75 px-4 py-3 md:px-6">
+          <div className="flex flex-wrap items-center gap-2">
+            {showUnsetContextState ? (
+              <>
+                <Badge className="border-dashed border-border text-muted-foreground" variant="outline">
+                  Context: Not selected yet
                 </Badge>
-              ) : null}
-            </>
-          )}
+                <Badge className="border-dashed border-border text-muted-foreground" variant="outline">
+                  Sub-context: Waiting for intent
+                </Badge>
+              </>
+            ) : (
+              <>
+                <Badge className="border-primary/30 bg-primary/10 text-primary" variant="outline">
+                  Context: {displayContextLabel}
+                </Badge>
+                {subContextLabel ? (
+                  <Badge variant="outline">Sub-context: {subContextLabel}</Badge>
+                ) : activeFlow !== 'home' ? (
+                  <Badge className="text-muted-foreground" variant="outline">
+                    Sub-context: -
+                  </Badge>
+                ) : null}
+              </>
+            )}
+          </div>
+          <p className="mt-2 text-xs text-muted-foreground">
+            {showUnsetContextState
+              ? 'Share what you want to do, and SAARTHI will auto-select the right context.'
+              : activeFlow === 'home'
+              ? 'Home routing evaluates every user turn and keeps context sticky until a new match appears.'
+              : activeFlow === 'feedback'
+              ? 'Feedback flow keeps context sticky so the capture conversation remains consistent.'
+              : activeFlow === 'story'
+              ? 'Story flow keeps context sticky so your narrative capture remains consistent.'
+              : activeFlow === 'companion'
+              ? 'Saathi flow keeps context sticky so support guidance stays grounded.'
+              : activeFlow === 'commons'
+              ? 'Commons flow keeps context sticky so discovery remains focused.'
+              : activeFlow === 'program'
+              ? 'Design Companion flow keeps context sticky so program planning stays structured.'
+              : 'Advanced mode is manual, but matching intents still route this shared thread automatically.'}
+          </p>
         </div>
-        <p className="mt-2 text-xs text-muted-foreground">
-          {showUnsetContextState
-            ? 'Share what you want to do, and SAARTHI will auto-select the right context.'
-            : activeFlow === 'home'
-            ? 'Home routing evaluates every user turn and keeps context sticky until a new match appears.'
-            : activeFlow === 'feedback'
-            ? 'Feedback flow keeps context sticky so the capture conversation remains consistent.'
-            : activeFlow === 'story'
-            ? 'Story flow keeps context sticky so your narrative capture remains consistent.'
-            : activeFlow === 'companion'
-            ? 'Saathi flow keeps context sticky so support guidance stays grounded.'
-            : activeFlow === 'commons'
-            ? 'Commons flow keeps context sticky so discovery remains focused.'
-            : activeFlow === 'program'
-            ? 'Design Companion flow keeps context sticky so program planning stays structured.'
-            : 'Advanced mode is manual, but matching intents still route this shared thread automatically.'}
-        </p>
-      </div>
+      )}
 
       <div className="min-h-0 flex-1 space-y-5 overflow-y-auto px-4 py-5 md:px-6">
         {messages.map((message) => (
