@@ -116,13 +116,13 @@
               "id": "ht-11",
               "type": "assistant",
               "agentName": "Saathi",
-              "text": "Thanks, Deepak - I already have the context from your enrollment story: direct outreach and walkthroughs rebuilt trust with at-risk families. Let's turn that into an ongoing Parent Engagement Plan through PTMs, so this isn't a one-time effort.",
+              "text": "Thanks, Deepak - I already have the context from your enrollment story: direct outreach and walkthroughs rebuilt trust with at-risk families. Let's build on that with a plan for PTMs. What's happening right now with your PTMs — are parents not showing up, or are they attending but not really engaged during the meetings?",
               "postDelayMs": 800
             },
             {
               "id": "ht-12",
               "type": "user",
-              "text": "That sounds right.",
+              "text": "PTMs are not engaging enough",
               "skipEngineResponse": true,
               "typingMsPerChar": 30,
               "postDelayMs": 650
@@ -131,70 +131,151 @@
               "id": "ht-13",
               "type": "assistant",
               "agentName": "Saathi",
-              "text": "Before I put this together - how often do your PTMs currently happen?",
+              "text": "When you say PTMs aren't engaging enough, do you mean parents are quiet and not asking questions or sharing concerns — or that the meetings feel rushed and don't give parents time to discuss their child's progress?",
               "postDelayMs": 700
             },
             {
               "id": "ht-14",
               "type": "user",
-              "text": "Once a term.",
-              "skipEngineResponse": true,
-              "typingMsPerChar": 30,
-              "postDelayMs": 600
-            },
-            {
-              "id": "ht-15",
-              "type": "assistant",
-              "agentName": "Saathi",
-              "text": "Got it. Is there a particular grade or group of parents you'd like to prioritize first, or should this cover the whole school?",
-              "postDelayMs": 700
-            },
-            {
-              "id": "ht-16",
-              "type": "user",
-              "text": "Let's prioritize Grade 1 and 2 parents first, since that's where we saw the drop.",
+              "text": "not sharing concerns meetings feel rushed child progress not discussed",
               "skipEngineResponse": true,
               "typingMsPerChar": 30,
               "postDelayMs": 650
             },
             {
+              "id": "ht-15",
+              "type": "assistant",
+              "agentName": "Saathi",
+              "text": "Got it. So parents aren't sharing concerns, the meetings feel rushed, and there's not enough time to actually discuss each child's progress. Have you tried anything so far to address this — like changing how the meetings are structured, or giving parents more time per child?",
+              "postDelayMs": 750
+            },
+            {
+              "id": "ht-16",
+              "type": "user",
+              "text": "no",
+              "skipEngineResponse": true,
+              "typingMsPerChar": 30,
+              "postDelayMs": 550
+            },
+            {
               "id": "ht-17",
               "type": "assistant",
               "agentName": "Saathi",
-              "text": "Sure, here's a plan built around making every PTM count, starting with Grade 1 and 2 parents.",
+              "text": "Based on what you've shared, here is your Goal for this plan:\n\nGoal: Improve parent engagement in PTMs by ensuring sufficient time for meaningful discussion of each child's progress and creating space for parents to share concerns.\n\nDoes this capture it correctly?",
+              "postDelayMs": 750
+            },
+            {
+              "id": "ht-18",
+              "type": "user",
+              "text": "yes",
+              "skipEngineResponse": true,
+              "typingMsPerChar": 30,
+              "postDelayMs": 550
+            },
+            {
+              "id": "ht-19",
+              "type": "assistant",
+              "agentName": "Saathi",
+              "text": "Great! Here are three SMART objectives for your plan. Which of these feels most realistic for your school, or would you like more options?",
               "blocks": [
                 {
-                  "type": "kv",
-                  "title": "Parent Engagement Plan",
-                  "rows": [
-                    {
-                      "label": "Goal",
-                      "value": "Keep parent trust growing through regular, structured engagement"
-                    },
-                    {
-                      "label": "Key action",
-                      "value": "Redesign every PTM around one academic showcase plus an open Q&A on facilities and outcomes"
-                    },
-                    {
-                      "label": "Supporting actions",
-                      "value": "Prioritize Grade 1 and 2 families each term; share a one-page outcomes update before every PTM; rotate teachers presenting classroom work"
-                    },
-                    { "label": "Timeline", "value": "20 to 30 days" },
-                    {
-                      "label": "Success signal",
-                      "value": "Attendance and engagement at PTMs tracked term over term"
-                    }
+                  "type": "list",
+                  "title": "SMART Objectives",
+                  "items": [
+                    "Objective 1: Increase the average time spent discussing each child's progress in PTMs from the current level to at least 10 minutes per child within 30 days.",
+                    "Objective 2: Ensure that at least 80% of parents ask at least one question or share one concern during PTMs within 35 days by creating structured discussion prompts and a welcoming meeting format.",
+                    "Objective 3: Reduce PTM duration pressure by restructuring meetings to include dedicated time slots for individual child discussions and parent feedback, with parents reporting satisfaction in post-meeting feedback forms within 40 days."
                   ]
                 }
               ],
               "postDelayMs": 850
             },
             {
-              "id": "ht-18",
+              "id": "ht-20",
+              "type": "user",
+              "text": "3",
+              "skipEngineResponse": true,
+              "typingMsPerChar": 30,
+              "postDelayMs": 550
+            },
+            {
+              "id": "ht-21",
               "type": "assistant",
               "agentName": "Saathi",
-              "text": "I suggest you to use mitra for feedback from parents during PTMs. \nI'll check in after a week to see if you need help in implimentation. Anything else you need right now?",
+              "text": "Perfect. Now let me create the action steps for your plan. Here's what you'll do over the next 40 days. Does this plan work for your school, or would you like to adjust any of these steps?",
+              "blocks": [
+                {
+                  "type": "list",
+                  "title": "Action Plan (Draft)",
+                  "items": [
+                    "Review your current PTM schedule and calculate how much time is actually spent per child — identify where time is being lost. (Week 1)",
+                    "Design a new PTM format with fixed time slots (e.g. 10 minutes per child) and share it with all teachers so everyone follows the same structure. (Week 1-2)",
+                    "Create a simple one-page discussion guide for teachers listing key points to cover — child's strengths, areas to improve, and space for parent questions. (Week 2)",
+                    "Hold a brief meeting with teachers to explain the new format and practice how to invite parent questions without making meetings feel formal or rushed. (Week 2-3)",
+                    "Conduct the first restructured PTM using the new time slots and discussion guide, and observe how it flows. (Week 3-4)",
+                    "Collect feedback from parents after the PTM using a simple form asking: \"Did you have enough time to discuss your child?\" and \"What concerns did you want to share?\" (Week 4)",
+                    "Review parent feedback and teacher observations, then adjust the format if needed for the next PTM. (Week 4-5)",
+                    "Conduct a second PTM with the refined format and track parent participation — count how many parents asked questions or shared concerns. (Week 5)"
+                  ]
+                }
+              ],
+              "postDelayMs": 900
+            },
+            {
+              "id": "ht-22",
+              "type": "user",
+              "text": "yes",
+              "skipEngineResponse": true,
+              "typingMsPerChar": 30,
+              "postDelayMs": 550
+            },
+            {
+              "id": "ht-23",
+              "type": "assistant",
+              "agentName": "Saathi",
+              "text": "Here is your Improvement Plan. I've compiled everything below. Take a look — if anything needs adjusting, let me know and I'll update it. Otherwise, say 'download' whenever you're ready and I'll send all formats at once.",
+              "blocks": [
+                {
+                  "type": "text",
+                  "title": "Parent Engagement Plan: PTMs",
+                  "body": "Goal: Improve parent engagement in PTMs by ensuring sufficient time for meaningful discussion of each child's progress and creating space for parents to share concerns.\n\nObjective: Reduce PTM duration pressure by restructuring meetings to include dedicated time slots for individual child discussions and parent feedback, with parents reporting satisfaction in post-meeting feedback forms within 40 days.\n\nTimeline: 35 days\n\nAction Plan:\n1. Review the current PTM schedule and calculate time spent per child — identify where time is lost. (Week 1)\n2. Design a new PTM format with fixed time slots (e.g. 10 minutes per child) and share it with all teachers. (Week 1-2)\n3. Create a one-page discussion guide covering strengths, areas to improve, and space for parent questions. (Week 2)\n4. Hold a brief meeting with teachers to explain the new format and practice inviting parent questions. (Week 2-3)\n5. Conduct the first restructured PTM using the new format and observe how it flows. (Week 3-4)\n6. Collect feedback from parents after the PTM using a simple form. (Week 4)\n7. Review parent feedback and teacher observations, then adjust the format if needed. (Week 4-5)\n8. Conduct a second PTM with the refined format and track parent participation. (Week 5)\n\nSuccess Indicators:\n- Time per child: at least 10 minutes spent discussing each child's progress, measured after each PTM.\n- Parent participation: at least 70% of parents ask a question or share a concern during PTMs.\n- Parent satisfaction: at least 75% of parents report having enough time to discuss their child, via feedback form."
+                }
+              ],
+              "postDelayMs": 900
+            },
+            {
+              "id": "ht-24",
+              "type": "assistant",
+              "agentName": "Saathi",
+              "text": "I suggest you use Mitra to log parent feedback from PTMs as it comes in. I'll check in after a week to see if you need help with implementation. Anything else you need right now?",
               "postDelayMs": 700
+            },
+            {
+              "id": "ht-25",
+              "type": "user",
+              "text": "How can I collect the parent feedback any mediums",
+              "skipEngineResponse": true,
+              "typingMsPerChar": 30,
+              "postDelayMs": 700
+            },
+            {
+              "id": "ht-26",
+              "type": "assistant",
+              "agentName": "Saathi",
+              "text": "Great question. Here are practical ways to collect parent feedback after PTMs. Keep it to 3-4 questions max so parents actually complete it, focusing on time spent, concerns shared, and overall satisfaction. Does this help you decide which method fits your school? Should I update Step 6 in your plan with a specific feedback method, or are you ready to download?",
+              "blocks": [
+                {
+                  "type": "list",
+                  "title": "Ways to Collect Parent Feedback",
+                  "items": [
+                    "Google Form — create a short form and share the link via WhatsApp or email; parents fill it on their phone anytime after the meeting.",
+                    "WhatsApp poll — send a quick poll asking \"Did you have enough time?\" with yes/no/somewhat options for a very fast response.",
+                    "QR code — print a QR code on a poster at the PTM exit that links to a Google Form; parents scan and respond on the spot.",
+                    "Quick verbal chat — as parents leave, ask 1-2 quick questions and jot down notes, if time allows."
+                  ]
+                }
+              ],
+              "postDelayMs": 850
             }
           ]
         }
