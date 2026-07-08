@@ -108,10 +108,10 @@ export function SidebarNav({ activeFlow, onFlowChange, activeHistoryId, onSelect
             onClick={() => onSelectHistory(entry.id)}
             type="button"
           >
-            <p className="flex items-center gap-2 text-sm font-semibold">
+            <p className="text-sm font-semibold">
               <History
                 className={cn(
-                  'h-4 w-4 transition-transform motion-transition-md',
+                  'float-left mr-2 mt-0.5 h-4 w-4 transition-transform motion-transition-md',
                   entry.id === activeHistoryId ? 'scale-105 text-primary' : 'text-primary/85',
                 )}
               />
