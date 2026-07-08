@@ -174,7 +174,7 @@
   {
     "id": "uc-woman-leader",
     "title": "Woman Leader: Chaupal to Impact",
-    "description": "Discussion capture, Micro Improvement planning, and impact capture linked across time.",
+    "description": "Capturing the challenges and ideas discussed in the community, planning an improvement for girls' safety, and recording the impact once it's implemented.",
     "config": {
       "version": 1,
       "defaultContextId": "mitra-discussion",
@@ -403,7 +403,7 @@
   {
     "id": "uc-school-leader",
     "title": "School Leader: Story to Next MI",
-    "description": "A completed improvement story becomes the starting point for the next Micro Improvement.",
+    "description": "Recording a completed attendance-improvement story, letting Saarthi surface unresolved challenges, and turning it into the next Micro Improvement plan for classroom learning.",
     "config": {
       "version": 1,
       "defaultContextId": "mitra-story-capture",
@@ -612,7 +612,7 @@
   {
     "id": "uc-teacher",
     "title": "Teacher: Video Insight to Lesson Plan",
-    "description": "A Video Analyzer Agent's teaching-model analysis becomes the Teacher Companion's lesson plan input.",
+    "description": "Sharing a well-taught classroom video, analysing what made it effective, and turning that approach into a new lesson plan for a different topic.",
     "config": {
       "version": 1,
       "defaultContextId": "video-analyzer",
@@ -765,7 +765,7 @@
   {
     "id": "uc-program-designer",
     "title": "Program Designer: Insight to Design",
-    "description": "Insights from a past program become the evidence base for designing a new one.",
+    "description": "Reviewing what worked and what didn't in a past mentoring program, and using those insights as the evidence base for designing a new program in a different state.",
     "config": {
       "version": 1,
       "defaultContextId": "insights-engine",
